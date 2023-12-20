@@ -9,11 +9,12 @@ import java.util.Optional;
 import java.util.concurrent.*;
 
 public class Client {
-    private final File socketFile = new File(new File(System.getProperty("java.io.tmpdir")), "junixsocket-test.sock");
-    private Integer x;
+    private final File socketFile = new File(new File(System.getProperty("java.io.tmpdir")), "junixsocket-test.sock"); // path to the Unix socket in the temporary directory
+    private Integer x; //input value
 
-    private final long timeLimit = 1;
+    private final long timeLimit = 1;  // limiting the time for calculations in seconds
 
+    // client constructor initiates reading an incoming message and starting calculations
     public Client(String typeOfFunction) {
         readMessage();
 
@@ -43,10 +44,11 @@ public class Client {
 
         sendMessage(resultStr, typeOfFunction);
         executorService.shutdownNow();
-
     }
 
+    // reading the input value x from the server
     public void readMessage() {
+        // trying to establish connection with socket and reading data
         try (AFUNIXSocket socket = AFUNIXSocket.newInstance()) {
             socket.connect( AFUNIXSocketAddress.of(socketFile));
             System.out.println("Connected to server");
@@ -62,6 +64,7 @@ public class Client {
         }
     }
 
+    // sending the calculation result back to the server
     private void sendMessage(String resultStr, String typeOfFunction){
         try (AFUNIXSocket socket = AFUNIXSocket.newInstance()) {
             socket.connect( AFUNIXSocketAddress.of(socketFile));
