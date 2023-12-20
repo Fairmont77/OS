@@ -11,14 +11,15 @@ import org.newsclub.net.unix.AFUNIXServerSocket;
 import org.newsclub.net.unix.AFUNIXSocketAddress;
 
 public class Server {
-    private static  Integer x;
+    private static  Integer x; //static variable for storing the entered value x
 
-    private static Process funcF;
+    private static Process funcF; // processes for performing functions F and G
 
     private static Process funcG;
 
-    private static int clientsToWaitFor = 2;
+    private static int clientsToWaitFor = 2; // counter of clients to connect to the server
 
+    // server constructor that initializes input and starts server logic
     public Server()  {
         Scanner sc = new Scanner(System.in);
         int x = 0;
@@ -32,6 +33,7 @@ public class Server {
         run();
     }
 
+    //main process which run the server
     public static void run()  {
         ArrayList<String> receivedValues = new ArrayList<>();
 
@@ -65,9 +67,13 @@ public class Server {
 
         parseResult(receivedValues);
     }
+
+    //main binary operation
     private static double binaryOperation(double resultF, double resultG){
         return resultF + resultG;
     }
+
+    //method for analyzing the results
     private static void parseResult(List<String> array){
         String elemF = array.get(0);
         String elemG = array.get(1);
@@ -92,7 +98,7 @@ public class Server {
         }
     }
 
-
+    //method for initializing the processes of functions F and G
     private static void initProcesses()  {
 
         ProcessBuilder processBuilderF = new ProcessBuilder("java", "ClientF.java");
