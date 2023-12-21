@@ -18,7 +18,7 @@ The project focuses on the computational logic behind two key mathematical funct
 - **Binary Operation**: Addition, which is applied when both computations yield valid results.
 
 
-#Lab2
+# Lab2
 
 ## Description
 
