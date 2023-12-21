@@ -16,3 +16,15 @@ The project focuses on the computational logic behind two key mathematical funct
 - **Synchronization**: Futures and Executors for async operations, non-blocking I/O
 - **Computation Medium**: Processes and threads to ensure isolated and concurrent computations
 - **Binary Operation**: Addition, which is applied when both computations yield valid results.
+
+
+#Lab2
+
+## Description
+
+Lab2 enhances the process scheduling simulation with notable improvements and optimizations.
+
+### Features
+
+- **Algorithm Optimization with SJN:**
+  The implementation of the Shortest Job Next (SJN) algorithm leverages a `PriorityQueue`, which automatically orders processes based on their CPU time. This ensures that the shortest jobs receive priority, streamlining the scheduling process and reducing wait times.
